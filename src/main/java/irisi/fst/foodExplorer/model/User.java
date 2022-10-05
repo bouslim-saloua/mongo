@@ -10,7 +10,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 /**
  *
@@ -24,15 +27,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="User")
 public class User {
     @Id
-   private int id;
-private String nom; 
-private String prenom;
-/*private String email;
-private String password;
-private String pays;
-private String ville;
-private String telephone;
-private String adresse;*/
+    private int id;
+    private String nom;
+    private String prenom;
+    private String email;
+    private String password;
+    private String pays;
+    private String ville;
+    private String telephone;
+    private String adresse;
+    @DBRef
+    private List<Commande> commandes;
 
 
 }

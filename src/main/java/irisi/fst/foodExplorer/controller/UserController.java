@@ -4,6 +4,7 @@
  */
 package irisi.fst.foodExplorer.controller;
 
+import irisi.fst.foodExplorer.model.Commande;
 import irisi.fst.foodExplorer.model.User;
 import irisi.fst.foodExplorer.respository.UserRepository;
 import java.util.List;
@@ -32,14 +33,22 @@ public class UserController {
 		return "Added user with id : " + user.getId();
 	}
 
-@GetMapping("/findAllUsers")
+	@GetMapping("/findAllUsers")
 	public List<User> getBooks() {
 		return repository.findAll();
 	}
 
-@GetMapping("/findAllUsers/{id}")
+	@GetMapping("/findAllUsers/{id}")
 	public Optional<User> getBook(@PathVariable int id) {
 		return repository.findById(id);
 	}
+
+	@GetMapping("/getUserCommande")
+	public List<Commande> getUserCommande(@RequestBody User user){
+		return repository.findAllCommandeByUser(user.getId());
+	}
+
+
+
 }
 
