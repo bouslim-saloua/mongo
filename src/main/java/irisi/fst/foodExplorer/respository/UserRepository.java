@@ -7,6 +7,7 @@ package irisi.fst.foodExplorer.respository;
 //import irisi.fst.foodExplorer.model.Commande;
 //import irisi.fst.foodExplorer.model.Produit;
 import irisi.fst.foodExplorer.model.User;
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 //import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -26,7 +27,8 @@ public interface UserRepository extends MongoRepository<User,Integer >{
 
 User findByEmail(String email);
 User findByTelephone(String telephone);
-
+//trouver toutes les commandes d'un utilisateur
+//List<> findCommandeByUser(int userId);
     
 }
 

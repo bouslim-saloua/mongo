@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Commande {
     @Id
     private int id;
-    private User user;
+   // private User user;
     private int quantite;
     private Date dateCommande;
     @DBRef

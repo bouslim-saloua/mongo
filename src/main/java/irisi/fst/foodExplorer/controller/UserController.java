@@ -4,6 +4,7 @@
  */
 package irisi.fst.foodExplorer.controller;
 
+import irisi.fst.foodExplorer.controller.util.AuthUtil;
 import irisi.fst.foodExplorer.model.Commande;
 import irisi.fst.foodExplorer.model.User;
 import irisi.fst.foodExplorer.respository.UserRepository;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
 	private UserRepository repository;
+private AuthUtil auth;
 
     @PostMapping("/addUser")
 	public String saveUser(@RequestBody User user) {
@@ -67,6 +69,7 @@ User userDBPhone = repository.findByEmail(user.getEmail());
 if(userDB != null || userDBPhone !=null){
 return "email or phone are already in use";
 }else{
+auth.signIn(userDB);
 repository.save(user);
 return "account registered successfully";
 }
@@ -79,7 +82,9 @@ if(userDB == null){
 return -1;
 }else if(!(password.equals(userDB.getPassword()))){
 return -2;
+
 }else{
+auth.signIn(userDB);
 return 1;
 }
 }

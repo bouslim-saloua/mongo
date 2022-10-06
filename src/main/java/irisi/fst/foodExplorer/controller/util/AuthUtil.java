@@ -12,7 +12,7 @@ import irisi.fst.foodExplorer.model.User;
  */
 public class AuthUtil {
     private User current;
-
+//for signUp and signIn
 public void signIn(User user){
         current = user;
 }

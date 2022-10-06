@@ -17,6 +17,7 @@ public class Produit {
     private String nom;
     private String categorie;
     private Long prix;
+private int userId;
 @DBRef
 private List<Commande> commandes;
 
