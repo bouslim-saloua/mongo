@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface CommandeRepo extends MongoRepository<Commande, Integer> {
   @Query(value = "{'userId': ?0}")
-    List<Commande> findCommandeByUserId(@Param("id") Long id);
+    List<Commande> findCommandeByUserId(@Param("id") int id);
 }

@@ -19,12 +19,17 @@ public class ProduitController {
         produitRepo.save(produit);
         return "Added user with id : " + produit.getId();
     }
-    @GetMapping("/")
-    public List<Produit> getAllProduits() {
+    @GetMapping("/produit/all")
+    public List<Produit> getAll() {
         return produitRepo.findAll();
     }
    /* @GetMapping("/getByCategorie/{categorie}")
     public List<Produit> getAllProduitsByCategorie(@PathVariable String categorie) {
         return produitRepo.findProduitByCategorie(categorie);
     }*/
+
+/*@GetMapping("/findAllProduits")
+public List<Produit> findProduits(){
+return (List<Produit>) produitRepo.findProduits();
+}*/
 }

@@ -35,7 +35,7 @@ return repository.findAll();
 }
 
 @GetMapping("/commandes/findAllByUser")
-List<Commande> findCommandeByUserId(@PathVariable Long id){
+List<Commande> findCommandeByUserId(@PathVariable int id){
 return repository.findCommandeByUserId(id);
 }
 
