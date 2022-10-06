@@ -9,11 +9,13 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Date;
 import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @ToString
 @Builder(toBuilder = true)
+@Document(collection="Commande")
 public class Commande {
     @Id
     private int id;

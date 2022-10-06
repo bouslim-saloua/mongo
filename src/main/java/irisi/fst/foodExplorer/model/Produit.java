@@ -1,7 +1,9 @@
 package irisi.fst.foodExplorer.model;
 
+import java.util.List;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="Produit")
@@ -15,5 +17,7 @@ public class Produit {
     private String nom;
     private String categorie;
     private Long prix;
+@DBRef
+private List<Commande> commandes;
 
 }

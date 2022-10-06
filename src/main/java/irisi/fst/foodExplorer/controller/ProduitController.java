@@ -23,8 +23,8 @@ public class ProduitController {
     public List<Produit> getAllProduits() {
         return produitRepo.findAll();
     }
-    @GetMapping("/getByCategorie/{categorie}")
+   /* @GetMapping("/getByCategorie/{categorie}")
     public List<Produit> getAllProduitsByCategorie(@PathVariable String categorie) {
         return produitRepo.findProduitByCategorie(categorie);
-    }
+    }*/
 }

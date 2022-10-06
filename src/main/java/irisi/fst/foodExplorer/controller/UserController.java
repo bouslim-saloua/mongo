@@ -28,26 +28,61 @@ public class UserController {
 	private UserRepository repository;
 
     @PostMapping("/addUser")
-	public String saveBook(@RequestBody User user) {
+	public String saveUser(@RequestBody User user) {
 		repository.save(user);
 		return "Added user with id : " + user.getId();
 	}
 
 	@GetMapping("/findAllUsers")
-	public List<User> getBooks() {
+	public List<User> getUsers() {
 		return repository.findAll();
 	}
 
 	@GetMapping("/findAllUsers/{id}")
-	public Optional<User> getBook(@PathVariable int id) {
+	public Optional<User> getUser(@PathVariable int id) {
 		return repository.findById(id);
 	}
 
-	@GetMapping("/getUserCommande")
+	/*@GetMapping("/getUserCommande")
 	public List<Commande> getUserCommande(@RequestBody User user){
 		return repository.findAllCommandeByUser(user.getId());
-	}
+	}*/
 
+@GetMapping("/findByEmail/{email}")
+public User findByEmail(@PathVariable String email){
+return repository.findByEmail(email);
+}
+
+@GetMapping("/findByPhone/{telephone}")
+public User findByTelephone(@PathVariable String telephone){
+return repository.findByTelephone(telephone);
+}
+
+
+@PostMapping("/register")
+public String register(@RequestBody User user){
+User userDB = repository.findByEmail(user.getEmail());
+User userDBPhone = repository.findByEmail(user.getEmail());
+
+if(userDB != null || userDBPhone !=null){
+return "email or phone are already in use";
+}else{
+repository.save(user);
+return "account registered successfully";
+}
+
+}
+@PostMapping("/seConnecter")
+public int signIn(@PathVariable String email, @PathVariable String password){
+User userDB = repository.findByEmail(email);
+if(userDB == null){
+return -1;
+}else if(!(password.equals(userDB.getPassword()))){
+return -2;
+}else{
+return 1;
+}
+}
 
 
 }
